@@ -18,265 +18,76 @@
       --terminal-text: #39ff14;
     }
     * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      box-sizing: border-box; margin: 0; padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Courier New", monospace;
       -webkit-tap-highlight-color: transparent;
     }
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      padding: 12px;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .suite-container {
-      width: 100%;
-      max-width: 500px;
-      background-color: var(--panel-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    }
-    .header {
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 14px;
-    }
-    .suite-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .cockpit-tag {
-      font-size: 0.8rem;
-      color: var(--accent-blue);
-      margin-top: 2px;
-    }
-    .section-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-    }
-    .scheduler-box {
-      background: rgba(0, 0, 0, 0.2);
-      border: 1px solid var(--border-color);
+    body { background-color: var(--bg-color); color: var(--text-main); padding: 12px; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; }
+    .suite-container { width: 100%; max-width: 500px; background-color: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); }
+    .header { padding-bottom: 12px; border-bottom: 1px solid var(--border-color); margin-bottom: 14px; }
+    .suite-title { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+    .cockpit-tag { font-size: 0.8rem; color: var(--accent-blue); margin-top: 2px; }
+    
+    /* Target Selector Component */
+    .ip-selector-box {
+      background: rgba(88, 166, 255, 0.05);
+      border: 1px solid var(--accent-blue);
       border-radius: 8px;
       padding: 10px;
       margin-bottom: 14px;
-    }
-    .time-options-scroll {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding-bottom: 6px;
-      margin-bottom: 8px;
-    }
-    .time-options-scroll::-webkit-scrollbar { display: none; }
-    .time-btn {
-      background: #21262d;
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 8px 14px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      font-weight: 600;
-      border-radius: 6px;
-      flex-shrink: 0;
-    }
-    .time-btn.active {
-      background: var(--accent-blue);
-      color: #000;
-      border-color: var(--accent-blue);
-    }
-    .scheduler-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 4px;
-    }
-    .enable-toggle {
-      background: transparent;
-      border: 1px solid var(--warn-color);
-      color: var(--warn-color);
-      padding: 8px 16px;
-      cursor: pointer;
-      font-size: 0.8rem;
-      font-weight: 700;
-      border-radius: 6px;
-    }
-    .enable-toggle.active {
-      background: var(--warn-color);
-      color: #000;
-    }
-    .next-schedule {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: bold;
-    }
-    .nav-tabs {
-      display: flex;
-      overflow-x: auto;
-      gap: 4px;
-      margin-bottom: 14px;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .nav-tab {
-      padding: 8px 12px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      cursor: pointer;
-      white-space: nowrap;
-      border-radius: 6px 6px 0 0;
-    }
-    .nav-tab.active {
-      color: var(--text-main);
-      background: var(--bg-color);
-      border-color: var(--border-color);
-      border-bottom-color: var(--bg-color);
-    }
-    .tab-content { display: none; }
-    .tab-content.active {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-    }
-    .primary-trigger-btn {
-      background: rgba(63, 185, 80, 0.1);
-      border: 1px solid var(--ok-color);
-      color: var(--ok-color);
-      padding: 12px;
-      cursor: pointer;
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border-radius: 8px;
-      width: 100%;
-    }
-    .indicator-pill-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
       gap: 6px;
     }
-    .indicator-pill {
-      background: rgba(0, 0, 0, 0.15);
+    .ip-dropdown {
+      background: #07090e;
       border: 1px solid var(--border-color);
+      color: var(--accent-blue);
+      padding: 8px;
       border-radius: 6px;
-      padding: 6px;
-      text-align: center;
+      font-size: 0.85rem;
+      font-weight: bold;
+      width: 100%;
+      outline: none;
     }
-    .pill-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      display: block;
-      margin-bottom: 2px;
-    }
+
+    .section-title { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; }
+    .scheduler-box { background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; margin-bottom: 14px; }
+    .time-options-scroll { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 8px; }
+    .time-options-scroll::-webkit-scrollbar { display: none; }
+    .time-btn { background: #21262d; border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 14px; cursor: pointer; font-size: 0.8rem; font-weight: 600; border-radius: 6px; flex-shrink: 0; }
+    .time-btn.active { background: var(--accent-blue); color: #000; border-color: var(--accent-blue); }
+    .scheduler-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+    .enable-toggle { background: transparent; border: 1px solid var(--warn-color); color: var(--warn-color); padding: 8px 16px; cursor: pointer; font-size: 0.8rem; font-weight: 700; border-radius: 6px; }
+    .enable-toggle.active { background: var(--warn-color); color: #000; }
+    .next-schedule { font-size: 0.8rem; color: var(--text-muted); font-weight: bold; }
+    .nav-tabs { display: flex; overflow-x: auto; gap: 4px; margin-bottom: 14px; border-bottom: 1px solid var(--border-color); }
+    .nav-tab { padding: 8px 12px; font-size: 0.75rem; font-weight: 700; background: transparent; border: 1px solid transparent; color: var(--text-muted); cursor: pointer; white-space: nowrap; border-radius: 6px 6px 0 0; }
+    .nav-tab.active { color: var(--text-main); background: var(--bg-color); border-color: var(--border-color); border-bottom-color: var(--bg-color); }
+    .tab-content { display: none; }
+    .tab-content.active { display: flex; flex-direction: column; gap: 12px; }
+    .primary-trigger-btn { background: rgba(63, 185, 80, 0.1); border: 1px solid var(--ok-color); color: var(--ok-color); padding: 12px; cursor: pointer; text-align: center; font-size: 0.85rem; font-weight: 700; border-radius: 8px; width: 100%; }
+    .indicator-pill-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .indicator-pill { background: rgba(0, 0, 0, 0.15); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px; text-align: center; }
+    .pill-label { font-size: 0.65rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 2px; }
     .pill-value { font-size: 0.85rem; font-weight: 700; }
     .pill-value.ok { color: var(--ok-color); }
     .pill-value.warn { color: var(--warn-color); }
     .pill-value.fail { color: var(--fail-color); }
     .pill-value.info { color: var(--accent-blue); }
-    
-    .console-terminal {
-      display: flex;
-      flex-direction: column;
-      height: 200px;
-      background: #07090e;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .console-topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #161b22;
-      padding: 6px 12px;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      font-weight: 700;
-    }
-    .clear-logs-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 0.7rem;
-    }
-    .console-screen {
-      flex-grow: 1;
-      padding: 10px;
-      font-size: 0.75rem;
-      overflow-y: auto;
-      color: var(--terminal-text);
-      line-height: 1.4;
-    }
+    .console-terminal { display: flex; flex-direction: column; height: 180px; background: #07090e; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; }
+    .console-topbar { display: flex; justify-content: space-between; align-items: center; background: #161b22; padding: 6px 12px; border-bottom: 1px solid var(--border-color); font-size: 0.7rem; color: var(--text-muted); font-weight: 700; }
+    .clear-logs-btn { background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.7rem; }
+    .console-screen { flex-grow: 1; padding: 10px; font-size: 0.75rem; overflow-y: auto; color: var(--terminal-text); line-height: 1.4; }
     .output-line { margin-bottom: 4px; }
-    
-    .repair-item-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border-color);
-      padding: 10px;
-      border-radius: 8px;
-    }
+    .repair-item-row { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; }
     .repair-title { font-size: 0.8rem; font-weight: bold; }
     .repair-status { font-size: 0.75rem; color: var(--fail-color); font-weight: bold; }
-    .repair-btn {
-      background: #21262d;
-      border: 1px solid var(--border-color);
-      color: var(--accent-blue);
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    
-    .lockout-box {
-      border: 1px dashed var(--fail-color);
-      background: rgba(248, 81, 73, 0.05);
-      border-radius: 8px;
-      padding: 16px;
-      text-align: center;
-    }
+    .repair-btn { background: #21262d; border: 1px solid var(--border-color); color: var(--accent-blue); padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; cursor: pointer; }
+    .lockout-box { border: 1px dashed var(--fail-color); background: rgba(248, 81, 73, 0.05); border-radius: 8px; padding: 16px; text-align: center; }
     .lockout-text { font-size: 0.8rem; color: var(--fail-color); margin-bottom: 12px; font-weight: bold; }
-    .override-input {
-      background: #07090e;
-      border: 1px solid var(--border-color);
-      color: var(--terminal-text);
-      padding: 8px;
-      border-radius: 6px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
-    .footer-metrics-tray {
-      margin-top: 14px;
-      border-top: 1px solid var(--border-color);
-      padding-top: 10px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
+    .override-input { background: #07090e; border: 1px solid var(--border-color); color: var(--terminal-text); padding: 8px; border-radius: 6px; width: 100%; text-align: center; font-size: 0.9rem; margin-bottom: 10px; letter-spacing: 2px; }
+    .footer-metrics-tray { margin-top: 14px; border-top: 1px solid var(--border-color); padding-top: 10px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 0.75rem; color: var(--text-muted); }
     .tray-item { display: flex; flex-direction: column; }
     .tray-val { font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-top: 2px; }
     .reboot-action-wrapper { grid-column: span 2; text-align: center; margin-top: 4px; }
@@ -289,6 +100,26 @@
       <h1 class="suite-title">Master Diagnostic Suite v2.0.0</h1>
       <div class="cockpit-tag">Barri's Cockpit 🌙 🔊 ⌨</div>
     </div>
+
+    <!-- Active IP Core System Selector Dropdown Component -->
+    <div class="section-title">Active Environment Target</div>
+    <div class="ip-selector-box">
+      <select class="ip-dropdown" id="targetIpSelectionNode" onchange="switchSystemTargetContext()">
+        <option value="192.168.1.10">CORE ASSET #01</option>
+        <option value="192.168.1.11">CORE ASSET #02</option>
+        <option value="192.168.1.12">CORE ASSET #03</option>
+        <option value="10.0.0.45">SECURE ENDPOINT #04</option>
+        <option value="10.0.0.46">SECURE ENDPOINT #05</option>
+        <option value="10.0.0.47">SECURE ENDPOINT #06</option>
+        <option value="172.16.5.1">PROD NODE #07</option>
+        <option value="172.16.5.2">PROD NODE #08</option>
+        <option value="172.16.5.3">PROD NODE #09</option>
+        <option value="192.168.88.4">REDUNDANT CELL #10</option>
+        <option value="192.168.88.5">REDUNDANT CELL #11</option>
+        <option value="192.168.88.6">REDUNDANT CELL #12</option>
+      </select>
+    </div>
+
     <div class="section-title">Admin Scheduler</div>
     <div class="scheduler-box">
       <div class="time-options-scroll">
@@ -303,17 +134,13 @@
         <div class="next-schedule" id="nextScheduleTimer">Next: --:--</div>
       </div>
     </div>
+
     <div class="nav-tabs">
       <button class="nav-tab active" onclick="switchTab(this, 'diagnostics')">DIAGNOSTICS</button>
       <button class="nav-tab" onclick="switchTab(this, 'repairs')">REPAIRS</button>
       <button class="nav-tab" onclick="switchTab(this, 'heavy')">HEAVY REPAIRS</button>
     </div>
+
     <div id="diagnosticsTab" class="tab-content active">
-      <button class="primary-trigger-btn" onclick="executeSuiteDiagnosticSequence()">RUN ALL DIAGNOSTICS</button>
+      <button class="primary-trigger-btn" onclick="executeSuiteDiagnosticSequence()">RUN NETWORK ROUTE SCAN</button>
       <div class="indicator-pill-grid">
-        <div class="indicator-pill"><span class="pill-label">ALL OK</span><span class="pill-value ok" id="countOk">0</span></div>
-        <div class="indicator-pill"><span class="pill-label">WARN</span><span class="pill-value warn" id="countWarn">0</span></div>
-        <div class="indicator-pill"><span class="pill-label">FAIL</span><span class="pill-value fail" id="countFail">0</span></div>
-        <div class="indicator-pill"><span class="pill-label">INFO</span><span class="pill-value info" id="countInfo">0</span></div>
-      </div>
-      <div class="console-terminal">
